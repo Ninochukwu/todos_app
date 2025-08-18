@@ -8,7 +8,7 @@ export class DatabaseService {
         this.mongooseAdapter = new MongooseAdapter();
         this.sequelizeAdapter = new SequelizeAdapter();
 
-        this.adapter = this.configService.getOrThrow('DATABASE_ADAPTER', 'mongoose');
+    this.adapter = ConfigService.getOrThrow('DATABASE_ADAPTER', 'mongoose');
     }
 
     async connect(){

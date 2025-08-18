@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "node ./src/main.js",
     "dev": "nodemon"
   },
   "nodemonConfig": {
@@ -32,9 +32,13 @@
     "passport-jwt": "^4.0.1",
     "pg": "^8.16.3",
     "redis": "^5.8.1",
-    "winston": "^3.17.0"
+    "sequelize": "^6.37.7",
+    "winston": "^3.17.0",
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
-  }
+  },
+  "repository": "https://github.com/Ninochukwu/todos_app.git",
+  "author": "Chinecherem Ugbelu <chinecheremugbelu@gmail.com>"
 }
