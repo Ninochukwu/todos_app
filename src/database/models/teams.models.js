@@ -3,7 +3,7 @@ import { SequelizeAdapter } from '../adapters/sequelize.adapter.js';
 
 const sequelize = new SequelizeAdapter().getConnection();
 
-export const User = sequelize.define('User', {
+export const Teams = sequelize.define('Teams', {
     id: {
         type: DataTypes.UUID,
         allowNull: false,
@@ -13,20 +13,7 @@ export const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    password: {
-        type: DataTypes.UUID,
-        allowNull: false,
-    },
-    isActive: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
-    },
-    createdAt:{
+    createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
@@ -39,13 +26,5 @@ export const User = sequelize.define('User', {
     deletedAt: {
         type: DataTypes.DATE,
         allowNull: true,
-    },
-});
-
-export const UserRole = sequelize.define('UserRole', {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
     },
 });

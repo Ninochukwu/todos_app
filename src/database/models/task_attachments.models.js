@@ -3,30 +3,25 @@ import { SequelizeAdapter } from '../adapters/sequelize.adapter.js';
 
 const sequelize = new SequelizeAdapter().getConnection();
 
-export const User = sequelize.define('User', {
+export const TaskAttachment = sequelize.define('TaskAttachment', {
     id: {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
     },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    password: {
+    taskId: {
         type: DataTypes.UUID,
         allowNull: false,
     },
-    isActive: {
-        type: DataTypes.BOOLEAN,
+    filePath: {
+        type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: true,
     },
-    createdAt:{
+    fileSize: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
@@ -35,17 +30,5 @@ export const User = sequelize.define('User', {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
-    },
-    deletedAt: {
-        type: DataTypes.DATE,
-        allowNull: true,
-    },
-});
-
-export const UserRole = sequelize.define('UserRole', {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
     },
 });
