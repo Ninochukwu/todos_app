@@ -1,66 +1,30 @@
-import { generateUniqueId } from "../common/utils.common.js";
+import { Todo } from "../database/models/todo.model.js";
 
-const todos = [
-    {
-        id: generateUniqueId(),
-        title: 'Buy groceries',
-        description: 'Buy groceries from the store',
-        completed: false
-    },
-    {
-        id: generateUniqueId(),
-        title: 'Get ready for the interview',
-        description: 'Prepare for the interview',
-        completed: false
-    },
-    
-];
-
-export const getTodos = () =>
+export const getTodos = async () =>
 {
-    return todos;
+    return await Todo.findAll();
 }
 
-export const getTodoById = ( id ) =>
+export const getTodoById = async ( id ) =>
 {
-    return todos.find( todo => todo.id === id );
+    return await Todo.findByPk(id);
 }
 
-export const createTodo = ( todo ) =>
+export const createTodo = async ( todo ) =>
 {
-    const newTodo = {
-        id: generateUniqueId(),
-        ...todo,
-       completed: false
-    }
-    todos.push( newTodo );
+    const newTodo = await Todo.create(todo);
     return newTodo;
 }
 
-export const updateTodo = ( id, todo ) =>
+export const updateTodo = async ( id, todo ) =>
 {
-    const index = todos.findIndex( todo => todo.id === id );
+    const updatedTodo = await Todo.update(todo, { where: { id }});
 
-    if ( index === -1 )
-    {
-        throw new Error( 'Todo not found' );
-    }
-
-    return todos[ index ] = {
-        ...todos[ index ],
-        ...todo
-    }
+    return updatedTodo;
 }
 
-export const deleteTodo = ( id ) =>
+export const deleteTodo = async ( id ) =>
 {
-    const index = todos.findIndex( todo => todo.id === id );
-
-    if ( index === -1 )
-    {
-        throw new Error( 'Todo not found' );
-    }
-
-    todos.splice( index, 1 );
+    await Todo.destroy({ where: {id}});
     return true;
 }
