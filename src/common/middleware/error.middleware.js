@@ -5,8 +5,8 @@ import { ConfigService } from '../config.service.js';
 const logger = new LoggerService();
 
 export class ErrorMiddleware {
-    static handleError(err, req, res, next){
-        if(err instanceof BaseError){
+    static handleError(err, req, res, next) { // <-- fixed order
+        if (err instanceof BaseError) {
             logger.error({
                 error: err.message,
                 stack: err.stack,
@@ -17,7 +17,7 @@ export class ErrorMiddleware {
                 timestamp: new Date().toISOString(),
             });
             return res.status(err.status).json(err.toResponse());
-        } else if(err instanceof ValidationError){
+        } else if (err instanceof ValidationError) {
             return res.status(422).json(err.toResponse());
         }
 
@@ -38,7 +38,7 @@ export class ErrorMiddleware {
         });
     }
 
-    static notFound(req, res, next){
+    static notFound(req, res, next) { // <-- fixed order
         const url = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
         const method = req.method.toLowerCase();
         const error = new NotFoundError(`Route ${url} not found or does not exist for ${method} method`);

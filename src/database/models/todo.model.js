@@ -30,9 +30,14 @@ export const Todo = sequelize.define(
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
   },
   {
-    tableName: "todos",
+    tableName: "todo",
     timestamps: true,
+    underscored: false,
   }
 );

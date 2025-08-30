@@ -25,10 +25,17 @@ export default {
           createdAt: {
             type: Sequelize.DataTypes.DATE,
             defaultValue: Sequelize.DataTypes.NOW,
+            allowNull: false,
           },
           updatedAt: {
             type: Sequelize.DataTypes.DATE,
             defaultValue: Sequelize.DataTypes.NOW,
+            allowNull: false,
+          },
+          deletedAt: {
+            type: Sequelize.DataTypes.DATE,
+            defaultValue: Sequelize.DataTypes.NOW,
+            allowNull: false,
           },
         },
         {
