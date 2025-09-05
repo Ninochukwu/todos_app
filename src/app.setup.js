@@ -9,6 +9,7 @@ import { LoggerService } from './common/logger.service.js';
 import { ConfigService } from './common/config.service.js';
 import { ErrorMiddleware } from './common/middleware/error.middleware.js';
 import { sendResponse } from './common/utils.common.js';
+import authRoutes from "./routes/auth.routes.js";
 
 class Application {
     constructor() {
@@ -37,6 +38,7 @@ class Application {
             message: 'API is running',
         }));
         this.app.use('/api/v1', baseRouter);
+        this.app.use("/api/v1/auth", authRoutes);
     }
 
     setupErrorHandlers() {

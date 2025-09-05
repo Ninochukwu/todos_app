@@ -13,3 +13,5 @@ export const getOAuthClient = () => {
 export const getCalendar = (auth) => {
   return google.calendar({ version: "v3", auth });
 };
+const oauth2Client = getOAuthClient();
+export default oauth2Client;

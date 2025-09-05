@@ -1,4 +1,4 @@
-import { getOAuthClient, getCalendar } from "../config/google_calendar.js";
+import { getOAuthClient, getCalendar } from "../config/googleAuth.js";
 
 export const addEventToCalendar = async (task, tokens) => {
   const oAuth2Client = getOAuthClient();

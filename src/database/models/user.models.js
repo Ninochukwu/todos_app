@@ -40,6 +40,14 @@ export const User = sequelize.define('User', {
         type: DataTypes.DATE,
         allowNull: true,
     },
+    google_access_token: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+},
+    google_refresh_token: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+},
 });
 
 export const UserRole = sequelize.define('UserRole', {
