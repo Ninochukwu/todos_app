@@ -9,6 +9,7 @@ import { LoggerService } from './common/logger.service.js';
 import { ConfigService } from './common/config.service.js';
 import { ErrorMiddleware } from './common/middleware/error.middleware.js';
 import { sendResponse } from './common/utils.common.js';
+import teamTaskRoutes from './routes/team_tasks.routes.js';
 import authRoutes from "./routes/auth.routes.js";
 
 class Application {
@@ -39,6 +40,7 @@ class Application {
         }));
         this.app.use('/api/v1', baseRouter);
         this.app.use("/api/v1/auth", authRoutes);
+        this.app.use('/api/v1/teams', teamTaskRoutes);
     }
 
     setupErrorHandlers() {

@@ -144,7 +144,8 @@ const seed = async () => {
 
     console.info(" 🌱 Seeding completed successfully");
     process.exit(0);
-  } catch (error) {
+  },
+  catch (error) {
     console.error(" 🚨 Seeding failed:", error);
     process.exit(1);
   }
